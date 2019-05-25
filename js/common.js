@@ -1,4 +1,4 @@
-var _ROOTPATH_ = "D:\\我的文档\\iCoolWolf\\Civil-Aviation-Database-System\\";
+var _ROOTPATH_ = "https://icoolwolf.github.io/Civil-Aviation-Database-System/";
 
 document.writeln("<link rel=\'stylesheet\' href=\'https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css\' />");
 document.writeln("<link rel=\'stylesheet\' href=\'https://rawcdn.githack.com/agarzola/jQueryAutocompletePlugin/9f181c7cf37b7143b2cd768dfc684bac6e98b69e/jquery.autocomplete.css\'>");
