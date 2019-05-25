@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>开锐大数据系统</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script src="../../js/common.js"></script>
+    </head>
+
+    <body onload="">
+		
+        <div data-role="page" id="pageone">
+			<div class="navpage"></div>
+			
+            <div data-role="main" class="ui-content">
+				<div class="headerpage"></div>
+				
+				<div id="core-content">
+					<div data-role="collapsible" data-inset="false" class="collapsibleclass" data-collapsed="false" >
+						<h1>机场航线明细数据下载</h1>
+						<table data-role="table" class="ui-responsive">
+							<thead>
+								<tr>
+									<th>机场：</th>
+									<th>起始时间：</th>
+									<th>结束时间：</th>
+									<th>经停类型：</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" placeholder="机场三字码..." id="airport"></td>
+									<td><input type="Date" placeholder="查询起始时间" id="start"></td>
+									<td><input type="Date" placeholder="查询结束时间" id="end"></td>
+									<td><select name="select-choice-min" id="stopType" data-mini="true">
+										<option value="1">全部</option>
+										<option value="0">直达</option>
+									</select></td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<th>统计口径：</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><select name="select-choice-min" id="dimension" data-mini="true">
+										<option value="actual">按实际量</option>
+										<option value="schedule">按计划量</option>
+									</select></td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="submit" id="download" onclick="executeDownload('airports/proportionExcel')">下载</button>
+					</div>
+				</div>
+            </div>
+			
+			<div class="loginpage"></div>
+        </div>
+
+    </body>
+</html>

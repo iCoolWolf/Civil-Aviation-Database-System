@@ -2,12 +2,15 @@
 $(function(){
 	//引用公共文件
 	$('.navpage').load(_ROOTPATH_ + "nav.html", {}, function(data) {
+		$('.navpage').html(data);
 		$('.navpage').trigger('create');
 	});
 	$('.loginpage').load(_ROOTPATH_ + "login.html", {}, function(data) {
+		$('.loginpage').html(data);
 		$('.loginpage').trigger('create');
 	});
 	$('.headerpage').load(_ROOTPATH_ + "header.html", {}, function(data) {
+		$('.headerpage').html(data);
 		$('.headerpage').trigger('create');
 	});
 	
@@ -69,20 +72,72 @@ function DateToStr(date){
 //执行下载
 function executeDownload(index) {
 	switch(index){
-		case 1:
+		case 'airports/trafficExport':
+			var airport = document.getElementById('airport').getAttribute("IATA");
+			var start = document.getElementById('start').value;
+			var end = document.getElementById('end').value;
+			var stopType = document.getElementById('stopType').value;
+			var date_type = document.getElementById('date_type').value;
+			url = "https://data.variflight.com/profiles/Airportscapacityapi/trafficExport?route_type=global&start_date={0}&end_date={1}&dimension=actual&airport={2}&stop={3}&date_type={4}&airlines=all".format(start, end, airport, stopType, date_type);
+			window.open(url);
+			return;
+		case 'airports/detailExcel':
+			var airport = document.getElementById('airport').getAttribute("IATA");
+			var start = document.getElementById('start').value;
+			var end = document.getElementById('end').value;
+			var stopType = document.getElementById('stopType').value;
+			var date_type = 'y'
+			var dimension = document.getElementById('dimension').value;
+			url = "https://data.variflight.com/profiles/Transportapi/detailExcel?start_date={0}&end_date={1}&dimension={2}&airport={3}&stop={4}&date_type={5}&airlines=all".format(start, end, dimension, airport, stopType, date_type);
+			window.open(url);
+			return;
+		case 'airports/proportionExcel':
+			var airport = document.getElementById('airport').getAttribute("IATA");
+			var start = document.getElementById('start').value;
+			var end = document.getElementById('end').value;
+			var stopType = document.getElementById('stopType').value;
+			var date_type = 'y'
+			var dimension = document.getElementById('dimension').value;
+			url = "https://data.variflight.com/profiles/Transportapi/proportionExcel?start_date={0}&end_date={1}&dimension={2}&airport={3}&stop={4}&date_type={5}&airlines=all".format(start, end, dimension, airport, stopType, date_type);
+			window.open(url);
+			return;
+		case 'airports/detailExport':
+			var airport = document.getElementById('airport').getAttribute("IATA");
+			var start_hour = document.getElementById('start_hour').value;
+			var end_hour = document.getElementById('end_hour').value;
+			var date = document.getElementById('date').value;
+			url = "https://data.variflight.com/profiles/Airportsmomentapi/detailExport?start_hour={0}&end_hour={1}&flight_type=all&airport={2}&airlines=total&date={3}".format(start_hour, end_hour, airport, date);
+			window.open(url);
+			return;
+		case 'airports/routeDetailExport':
 			var airport = document.getElementById('airport').getAttribute("IATA");
 			var start = document.getElementById('start').value;
 			var end = document.getElementById('end').value;
 			var stopType = document.getElementById('stopType').value;
 			url = "https://data.variflight.com/profiles/Airportsroute/routeDetailExport?routeType=all&stopType={0}&screenMark=&start={1}&end={2}&airport={3}&airlines=total".format(stopType, start, end, airport);
 			window.open(url);
+			return;
+		case 'airports/dispatchDetailExport':
+			var airport = document.getElementById('airport').getAttribute("IATA");
+			var start_date = document.getElementById('start').value;
+			var end_date = document.getElementById('end').value;
+			var dataType = document.getElementById('dataType').value;
+			url = "https://data.variflight.com/profiles/Airportsdispatch/dispatchDetailExport?airport={0}&airlines=&start_date={1}&end_date={2}&dataType={3}".format(airport, start_date, end_date, dataType);
+			window.open(url);
+			return;
 		default:
+			alert('下载出错！');
 			return;
 	};
 }
 
 //切换功能
 function switchFunction(index) {
-	url = "./func/{0}.html".format(index);
+	var url = _ROOTPATH_;
+	if(index != ''){
+		url = "{0}/func/{1}.html".format(_ROOTPATH_, index);
+	}else{
+		url = "{0}/index.html".format(_ROOTPATH_);
+	}
 	window.location.href=url;
 }

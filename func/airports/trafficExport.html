@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>开锐大数据系统</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<script src="../js/common.js"></script>
+		<script src="../../js/common.js"></script>
     </head>
 
     <body onload="">
@@ -33,14 +33,27 @@
 									<td><input type="Date" placeholder="查询起始时间" id="start"></td>
 									<td><input type="Date" placeholder="查询结束时间" id="end"></td>
 									<td><select name="select-choice-min" id="stopType" data-mini="true">
-										<option value="all">全部</option>
-										<option value="direct">直达</option>
-										<option value="isstop">经停</option>
+										<option value="1">全部</option>
+										<option value="0">直达</option>
+									</select></td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<th>统计周期：</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><select name="select-choice-min" id="date_type" data-mini="true">
+										<option value="d">按日</option>
+										<option value="w">按周</option>
+										<option value="m">按月</option>
 									</select></td>
 								</tr>
 							</tbody>
 						</table>
-						<button type="submit" id="download" onclick="executeDownload('routeDetailExport')">下载</button>
+						<button type="submit" id="download" onclick="executeDownload('airports/trafficExport')">下载</button>
 					</div>
 				</div>
             </div>
