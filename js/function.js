@@ -1,15 +1,15 @@
 //初始化函数方法
 $(function(){
 	//引用公共文件
-	$('.navpage').load(_ROOTPATH_ + "nav.html", {}, function(data) {
+	$('.navpage').load(_ROOTPATH_ + "nav.html", function(data) {
 		$('.navpage').html(data);
 		$('.navpage').trigger('create');
 	});
-	$('.loginpage').load(_ROOTPATH_ + "login.html", {}, function(data) {
+	$('.loginpage').load(_ROOTPATH_ + "login.html", function(data) {
 		$('.loginpage').html(data);
 		$('.loginpage').trigger('create');
 	});
-	$('.headerpage').load(_ROOTPATH_ + "header.html", {}, function(data) {
+	$('.headerpage').load(_ROOTPATH_ + "header.html", function(data) {
 		$('.headerpage').html(data);
 		$('.headerpage').trigger('create');
 	});
