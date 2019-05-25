@@ -1,0 +1,26 @@
+<div data-role="collapsible" data-inset="false" class="collapsibleclass" data-collapsed="false" >
+<h1>机场航线明细数据下载</h1>
+<table data-role="table" class="ui-responsive">
+	<thead>
+		<tr>
+			<th>机场：</th>
+			<th>起始时间：</th>
+			<th>结束时间：</th>
+			<th>经停类型：</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><input type="text" placeholder="机场三字码..." id="airport"></td>
+			<td><input type="Date" placeholder="查询起始时间" id="start"></td>
+			<td><input type="Date" placeholder="查询结束时间" id="end"></td>
+			<td><select name="select-choice-min" id="stopType" data-mini="true">
+				<option value="all">全部</option>
+				<option value="direct">直达</option>
+				<option value="isstop">经停</option>
+			</select></td>
+		</tr>
+	</tbody>
+</table>
+<button type="submit" onclick="executeDownload('routeDetailExport')">下载</button>
+</div>
