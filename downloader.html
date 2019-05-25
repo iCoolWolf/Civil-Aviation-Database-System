@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>开锐大数据系统</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="https://rawcdn.githack.com/agarzola/jQueryAutocompletePlugin/9f181c7cf37b7143b2cd768dfc684bac6e98b69e/jquery.autocomplete.css">
+		<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="https://rawcdn.githack.com/agarzola/jQueryAutocompletePlugin/9f181c7cf37b7143b2cd768dfc684bac6e98b69e/jquery.autocomplete.js"></script>
+		<script src="./airports.js"></script>
+
+    </head>
+
+    <body onload="">
+		
+        <div data-role="page" id="pageone">
+            <div data-role="header" data-position="fixed">
+                <h1>飞常准大数据下载</h1>
+				<a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-info ui-btn-icon-left" style="left:auto;right:20px;">登录</a>
+            </div>
+            <div data-role="main" class="ui-content">
+                <p align="center">测试账号：18601341124</br>测试密码：iewoac123</p>
+				
+				<div data-role="collapsible-set">
+					<!--第一页功能start-->
+					<div data-role="collapsible" data-inset="false" data-collapsed="false">
+						<h1>机场航线明细数据下载</h1>
+						<table data-role="table" class="ui-responsive">
+							<thead>
+								<tr>
+									<th>机场：</th>
+									<th>起始时间：</th>
+									<th>结束时间：</th>
+									<th>经停类型：</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" placeholder="机场三字码..." id="airport"></td>
+									<td><input type="Date" placeholder="查询起始时间" id="start"></td>
+									<td><input type="Date" placeholder="查询结束时间" id="end"></td>
+									<td><select name="select-choice-min" id="stopType" data-mini="true">
+										<option value="all">全部</option>
+										<option value="direct">直达</option>
+										<option value="isstop">经停</option>
+									</select></td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="submit" onclick="executeDownload(1)">下载</button>
+					</div>
+					<!--第一页功能end-->
+					
+					<!--第二页功能start-->
+					<div data-role="collapsible" data-inset="false">
+						<h1>其他数据下载</h1>
+						<table data-role="table" class="ui-responsive">
+							<thead>
+								<tr>
+									<th>机场：</th>
+									<th>起始时间：</th>
+									<th>结束时间：</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" placeholder="机场三字码..." id="airport"></td>
+									<td><input type="Date" placeholder="查询起始时间" id="start"></td>
+									<td><input type="Date" placeholder="查询结束时间" id="end"></td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="submit" onclick="executeDownload()">下载</button>
+					</div>
+					<!--第二页功能end-->
+					
+					<!--第三页功能start-->
+					<div data-role="collapsible" data-inset="false">
+						<h1>其他数据下载</h1>
+						<table data-role="table" class="ui-responsive">
+							<thead>
+								<tr>
+									<th>机场：</th>
+									<th>起始时间：</th>
+									<th>结束时间：</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" placeholder="机场三字码..." id="airport"></td>
+									<td><input type="Date" placeholder="查询起始时间" id="start"></td>
+									<td><input type="Date" placeholder="查询结束时间" id="end"></td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="submit" onclick="executeDownload()">下载</button>
+					</div>
+					<!--第三页功能end-->
+				</div>
+				
+                <table data-role="table" data-mode="" class="ui-responsive" id="datatable">
+                    <!--这里是留言板的显示区域-->
+                </table>
+            </div>
+			
+			<!--登录弹窗start-->
+			<div data-role="popup" id="myPopup" class="ui-content" data-theme="b">
+			  <a href="#" data-rel="back" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			  <iframe src="https://data.variflight.com/" width="800" height="480" seamless></iframe>
+			</div>
+			<!--登录弹窗end-->
+        </div>
+		
+    </body>
+	
+	<script>
+	//初始化函数方法
+	$(function(){
+		$("#airport").autocomplete(airports, {
+			max: 10,    //列表里的条目数
+			minChars: 0,    //自动完成激活之前填入的最小字符
+			width: $("#airport").width()+1,     //提示的宽度，溢出隐藏
+			scrollHeight: 300,   //提示的高度，溢出显示滚动条
+			matchContains: true,    //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+			autoFill: false,    //自动填充
+			formatItem: function(row, i, max) {
+				return row.value + '  (' + row.name + ')';
+			},
+			formatMatch: function(row, i, max) {
+				return row.name + row.value;
+			},
+			formatResult: function(row) {
+				return row.value + '  (' + row.name + ')';
+			}
+		}).result(function(event, row, formatted) {
+			$("#airport").attr("IATA", row.name);
+		});
+		
+		var now_time = DateToStr(new Date()); 
+		$("#start").val(now_time)
+		$("#end").val(now_time)
+		$("#start").bind("input propertychange",function(event){
+			var start_time = new Date($("#start").val());
+			start_time.setFullYear(start_time.getFullYear()+1)
+			start_time.setDate(start_time.getDate()-1)
+			var end_time = DateToStr(start_time)
+			$("#end").val(end_time);
+		});
+	});
+		
+	//执行下载
+	function executeDownload(index) {
+		switch(index){
+			case 1:
+				var airport = document.getElementById('airport').getAttribute("IATA");
+				var start = document.getElementById('start').value;
+				var end = document.getElementById('end').value;
+				var stopType = document.getElementById('stopType').value;
+				url = "https://data.variflight.com/profiles/Airportsroute/routeDetailExport?routeType=all&stopType={0}&screenMark=&start={1}&end={2}&airport={3}&airlines=total".format(stopType, start, end, airport);
+				window.open(url);
+			default:
+				return;
+		};
+	}
+	
+	//格式化字符串
+	String.prototype.format = function(){
+		var args = arguments;
+		return this.replace(/\{(\d+)\}/gm, function(ms, p1){return typeof(args[p1]) == 'undefined' ? ms : args[p1]});
+	}
+	
+	//将日期转化字符串(yyyy-MM-dd)
+	function DateToStr(date){
+		 var year = date.getFullYear();
+		 var month =(date.getMonth() + 1).toString();
+		 var day = (date.getDate()).toString();
+		 if (month.length == 1) {
+			 month = "0" + month;
+		 }
+		 if (day.length == 1) {
+			 day = "0" + day;
+		 }
+		 dateTime = year +"-"+ month +"-"+  day;
+		 return dateTime;
+	}
+
+	</script>
+	
+</html>
