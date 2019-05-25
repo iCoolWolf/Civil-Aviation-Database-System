@@ -1,0 +1,29 @@
+<div data-role="header" data-position="fixed">
+	<a href="#overlayPanel" class="ui-btn ui-icon-bullets ui-btn-icon-left" style="left:20px;right:auto;">功能</a>
+	<h1>飞常准大数据下载</h1>
+	<a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-user ui-btn-icon-left" style="left:auto;right:20px;">登录</a>
+</div>
+
+<div data-role="panel" id="overlayPanel" data-display="overlay"> 
+	<h2>功能选择</h2>
+	<a href="#pageone" data-rel="close" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+	
+	<form class="ui-filterable">
+	  <input id="myFilter" data-type="search">
+	</form>
+	<ul data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="false" data-inset="true">
+	  <li data-filtertext="jichang"><a href="#" onclick="switchFunction('routeDetailExport');">机场航线明细下载</a></li>
+	  <li><a href="#">机场运力趋势下载</a></li>
+	  <li><a href="#">机场运力细分下载</a></li>
+	  <li><a href="#">机场类型占比下载</a></li>
+	  <li><a href="#">机场航班详情下载</a></li>
+	  <li><a href="#">机场航线明细下载</a></li>
+	  <li><a href="#">放行正常率-数据列表下载</a></li>
+	  <li><a href="#">航司运力趋势下载</a></li>
+	  <li><a href="#">航司运力细分下载</a></li>
+	  <li><a href="#">航司国际地区分类占比下载</a></li>
+	  <li><a href="#">航司航线明细下载</a></li>
+	  <li><a href="#">航司投放明细下载</a></li>
+	  <li><a href="#">航班波下载</a></li>
+	</ul>
+</div> 

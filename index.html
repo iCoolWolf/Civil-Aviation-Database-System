@@ -3,63 +3,25 @@
     <head lang="en">
         <meta charset="UTF-8">
         <title>开锐大数据系统</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-		<link rel="stylesheet" href="https://rawcdn.githack.com/agarzola/jQueryAutocompletePlugin/9f181c7cf37b7143b2cd768dfc684bac6e98b69e/jquery.autocomplete.css">
-		<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script src="https://rawcdn.githack.com/agarzola/jQueryAutocompletePlugin/9f181c7cf37b7143b2cd768dfc684bac6e98b69e/jquery.autocomplete.js"></script>
-		<script src="./data/airports.js"></script>
-		<script src="./js/function.js"></script>
-
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script src="./js/common.js"></script>
     </head>
 
     <body onload="">
 		
         <div data-role="page" id="pageone">
-            <div data-role="header" data-position="fixed">
-				<a href="#overlayPanel" class="ui-btn ui-icon-bullets ui-btn-icon-left" style="left:20px;right:auto;">功能</a>
-                <h1>飞常准大数据下载</h1>
-				<a href="#myPopup" data-rel="popup" class="ui-btn ui-icon-user ui-btn-icon-left" style="left:auto;right:20px;">登录</a>
-            </div>
+			<div class="navpage"></div>
 			
-			<div data-role="panel" id="overlayPanel" data-display="overlay"> 
-				<h2>功能选择</h2>
-				<a href="#pageone" data-rel="close" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-				
-				<form class="ui-filterable">
-				  <input id="myFilter" data-type="search">
-				</form>
-				<ul data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="false" data-inset="true">
-				  <li data-filtertext="jichang"><a href="#" onclick="executeFuncSwitch('routeDetailExport');">机场航线明细下载</a></li>
-				  <li><a href="#">机场运力趋势下载</a></li>
-				  <li><a href="#">机场运力细分下载</a></li>
-				  <li><a href="#">机场类型占比下载</a></li>
-				  <li><a href="#">机场航班详情下载</a></li>
-				  <li><a href="#">机场航线明细下载</a></li>
-				  <li><a href="#">放行正常率-数据列表下载</a></li>
-				  <li><a href="#">航司运力趋势下载</a></li>
-				  <li><a href="#">航司运力细分下载</a></li>
-				  <li><a href="#">航司国际地区分类占比下载</a></li>
-				  <li><a href="#">航司航线明细下载</a></li>
-				  <li><a href="#">航司投放明细下载</a></li>
-				  <li><a href="#">航班波下载</a></li>
-				</ul>
-			</div> 
-				
             <div data-role="main" class="ui-content">
-                <p align="center">测试账号：18601341124</br>测试密码：iewoac123</p>
+				<div class="headerpage"></div>
 				
-				<div id="core-content"></div>
+				<div id="core-content">
+				
+				</div>
             </div>
 			
-			<!--登录弹窗start-->
-			<div data-role="popup" id="myPopup" class="ui-content" data-theme="b">
-			  <a href="#" data-rel="back" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-			  <iframe src="https://data.variflight.com/" width="800" height="480" seamless></iframe>
-			</div>
-			<!--登录弹窗end-->
+			<div class="loginpage"></div>
         </div>
-		
+
     </body>
 </html>

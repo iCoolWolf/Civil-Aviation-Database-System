@@ -1,5 +1,16 @@
 //初始化函数方法
 $(function(){
+	//引用公共文件
+	$('.navpage').load(_ROOTPATH_ + "nav.html", {}, function(data) {
+		$('.navpage').trigger('create');
+	});
+	$('.loginpage').load(_ROOTPATH_ + "login.html", {}, function(data) {
+		$('.loginpage').trigger('create');
+	});
+	$('.headerpage').load(_ROOTPATH_ + "header.html", {}, function(data) {
+		$('.headerpage').trigger('create');
+	});
+	
 	//文本自动补充
 	$("#airport").autocomplete(airports, {
 		max: 10,    //列表里的条目数
@@ -70,29 +81,8 @@ function executeDownload(index) {
 	};
 }
 
-//执行功能切换
-function executeFuncSwitch(index) {
-	switch(index){
-		case 'routeDetailExport':
-			URL = './' + index + '.html';
-			// $.ajax({ 
-				// type : "GET", 
-				// url : URL, 
-				// dataType : "html",
-				// success : function(data){ 
-					// $("#core-content").html(data.) 
-				// }, 
-				// error:function(){ 
-					// alert('fail'); 
-				// } 
-			// }); 
-			$.ajaxSetup ({ 
-				cache: false 
-			});
-			$.get(URL, function(data){  
-			   $('#core-content').html(data);  
-			});
-		default:
-			return;
-	};
+//切换功能
+function switchFunction(index) {
+	url = "./func/{0}.html".format(index);
+	window.location.href=url;
 }
