@@ -135,9 +135,9 @@ function executeDownload(index) {
 function switchFunction(index) {
 	var url = _ROOTPATH_;
 	if(index != ''){
-		url = "{0}/func/{1}.html".format(_ROOTPATH_, index);
+		url = "{0}func/{1}.html".format(_ROOTPATH_, index);
 	}else{
-		url = "{0}/index.html".format(_ROOTPATH_);
+		url = "{0}index.html".format(_ROOTPATH_);
 	}
 	window.location.href=url;
 }
